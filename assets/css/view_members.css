@@ -1,0 +1,32 @@
+
+/* Cards Styling */
+
+.card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #2c3e50;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.card li {
+    padding: 10px 0;
+}
+
+.card hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+}
