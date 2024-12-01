@@ -102,21 +102,6 @@ The Event Management System is designed to simplify the management of university
 
 ---
 
-## **Folder Structure**
-
-```
-project-folder/
-├── assets/                # Images, CSS, JavaScript files
-├── includes/              # Header, Footer, Database connection files
-├── admin/                 # Admin dashboard and management files
-├── user/                  # User registration and event participation files
-├── dbconnect.php          # Database connection script
-├── event_management.sql   # Database schema and sample data
-└── README.md              # Project documentation
-```
-
----
-
 ## **Support**
 
 If you encounter any issues:
