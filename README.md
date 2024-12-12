@@ -89,13 +89,30 @@ The Event Management System is designed to simplify the management of university
 
 ### **Admin Access**
 1. Use the admin credentials to log in:
-   - **Username**: `admin@example.com` (default email in the database)
-   - **Password**: `password123` (default password in the database)
+   - **Username**: `sumon1@gmail.com` (default email in the database)
+   - **Password**: `sumon` (default password in the database)
+
+
+### **Admin Login Process**
+   - **Route**: 
+   ``` 
+   localhost/test_model/admin/login.php
+   ```
 
 2. Manage events, clubs, and announcements via the admin dashboard.
 
----
 
+### **Admin Access**
+1. Use the admin credentials to log in:
+   - **Username**: `ssumon@gmail.com` (default email in the database)
+   - **Password**: `sumon` (default password in the database)
+
+---
+### **user Login Process**
+   - **Route**: 
+   ``` 
+   localhost/test_model/user/login.php
+   ```
 ### **User Registration**
 1. Navigate to the registration page.
 2. Fill in the user details to register for events and segments.
@@ -109,14 +126,4 @@ If you encounter any issues:
 - Ensure that XAMPP services (Apache, MySQL) are running.
 - Verify that the database is properly imported.
 
-For further assistance, please contact **[Your Name]** at **[Your Email]**.
-
 ---
-
-## **License**
-
-This project is open-source and free to use. You can modify it as needed.
-
---- 
-
-This **README.md** file provides clear steps and ensures that your project is easy to set up and run. Let me know if you’d like any changes!

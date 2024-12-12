@@ -27,6 +27,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $start_date = $_POST['start_date'];
     $end_date = $_POST['end_date'];
 
+
+    // update the code to handle image upload
+    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        $imageTmpPath = $_FILES['image']['tmp_name'];
+        $imageName = $_FILES['image']['name'];
+        $imageSize = $_FILES['image']['size'];
+        $imageType = $_FILES['image']['type'];
+        $imageExtension = pathinfo($imageName, PATHINFO_EXTENSION);
+
+        // Specify the directory to save the uploaded image
+        $uploadDir = '../uploads/'; // Ensure this directory exists and is writable
+        $newImageName = uniqid() . '.' . $imageExtension; // Create a unique name for the image
+        $uploadFilePath = $uploadDir . $newImageName;
+
+        if (move_uploaded_file($imageTmpPath, $uploadFilePath)) {
+            // Store relative path in the database
+            $relativePath = "uploads/" . $newImageName;
+
+            // Example SQL to save the path to the database
+            // Assuming $conn is your database connection
+        } 
+        
+
+    }else {
+        echo "Error uploading the file.";
+    }
+
     if (!empty($event_name) && !empty($description) && !empty($start_date) && !empty($end_date) && ($club_id || $dept_id)) {
         // Ensure only one of club_id or dept_id is set
         if ($club_id && !$dept_id) {
@@ -35,8 +62,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $club_id = null;
         }
 
-        $stmt = $conn->prepare("INSERT INTO events (name, club_id, dept_id, description, start_date, end_date, admin_id) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("siisssi", $event_name, $club_id, $dept_id, $description, $start_date, $end_date, $admin_id);
+
+
+
+        $stmt = $conn->prepare("INSERT INTO events (name, club_id, dept_id, description, start_date, end_date, admin_id, image_path) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("siisssis", $event_name, $club_id, $dept_id, $description, $start_date, $end_date, $admin_id, $relativePath);
         if ($stmt->execute()) {
             $success_message = "Event added successfully!";
         } else {
@@ -88,7 +118,7 @@ $departments = $conn->query("SELECT dept_id, name FROM departments")->fetch_all(
         <?php endif; ?>
 
         <!-- Add Event Form -->
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="event_name">Event Name</label>
                 <input type="text" id="event_name" name="event_name" required>
@@ -122,7 +152,13 @@ $departments = $conn->query("SELECT dept_id, name FROM departments")->fetch_all(
             <div class="form-group">
                 <label for="end_date">End Date</label>
                 <input type="date" id="end_date" name="end_date" required>
-            </div>
+            </div>   
+            <div class="form-group">
+                <label for="image">Select Image:</label>
+                <input type="file" name="image" accept="image/*" required>
+                <br><br>
+            </div>    
+                <!-- <input type="submit" value="Upload"> -->
             <button type="submit" class="btn">Add Event</button>
         </form>
 

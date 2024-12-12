@@ -108,18 +108,12 @@ $admin = $result->fetch_assoc();
             <a href="manage_events.php" class="card">
                 <h3>Manage Events</h3>
             </a>
-            <a href="manage_users.php" class="card">
-                <h3>Manage Users</h3>
-            </a>
-            <a href="reports.php" class="card">
-                <h3>View Reports</h3>
-            </a>
             <a href="view_event.php" class="card">
                 <h3>View Event</h3>
             </a>
-            <a href="add_member.php" class="card">
-                <h3>Add Member</h3>
-            </a>
+            <!-- <a href="reports.php" class="card">
+                <h3>Reports</h3>
+            </a> -->
             <a href="sponsor.php" class="card">
                 <h3>Sponsor</h3>
             </a>

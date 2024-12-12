@@ -36,10 +36,10 @@ $upcoming_events_result = mysqli_query($conn, $upcoming_events_query);
                     Streamline your event management process with our powerful tools and seamless experience.
                 </p>
                 <div class="flex justify-center gap-4">
-                    <a href="user/events.php" class="bg-white text-blue-600 font-semibold py-2 px-6 rounded shadow hover:bg-gray-100">
+                    <a href="events.php" class="bg-blue-600 border-2 border-white text-white font-semibold py-2 px-6 rounded hover:bg-blue-700">
                         View Events
                     </a>
-                    <a href="user/events.php" class="bg-blue-600 border-2 border-white text-white font-semibold py-2 px-6 rounded hover:bg-blue-700">
+                    <a href="events.php" class="bg-blue-600 border-2 border-white text-white font-semibold py-2 px-6 rounded hover:bg-blue-700">
                         Register Event
                     </a>
                 </div>
@@ -51,17 +51,25 @@ $upcoming_events_result = mysqli_query($conn, $upcoming_events_query);
             <div class="container mx-auto px-6">
                 <h2 class="text-3xl font-bold text-center mb-8">Running Events</h2>
                 <div class="grid md:grid-cols-3 gap-6">
-                    <?php while ($event = mysqli_fetch_assoc($running_events_result)): ?>
-                        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-                            <!-- Use the 'image_path' from the database -->
-                            <img src="<?= htmlspecialchars($event['image_path']) ?>" alt="<?= htmlspecialchars($event['name']) ?>" class="w-full h-40 object-cover">
-                            <div class="p-6">
-                                <h3 class="text-xl font-semibold mb-2"><?= htmlspecialchars($event['name']) ?></h3>
-                                <p class="text-gray-600 mb-4"><?= htmlspecialchars($event['description']) ?></p>
-                                <span class="text-blue-500 font-bold"><?= htmlspecialchars($event['start_date']) ?> - <?= htmlspecialchars($event['end_date']) ?></span>
-                            </div>
+                <?php while ($event = mysqli_fetch_assoc($running_events_result)): ?>
+                    <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                        <?php 
+                        // Construct the full path to the image
+                        if($event['image_path'] == null) {
+                            $imagePath = "https://i.ibb.co.com/vZVfqb9/IMG20210907180800-01.jpg";
+                        } else {
+                            $imagePath = htmlspecialchars($event['image_path']);
+                        } 
+                        ?>
+                        <img src="<?= $imagePath ?>" alt="<?= htmlspecialchars($event['name']) ?>" class="w-full h-40 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2"><?= htmlspecialchars($event['name']) ?></h3>
+                            <p class="text-gray-600 mb-4"><?= htmlspecialchars($event['description']) ?></p>
+                            <span class="text-blue-500 font-bold"><?= htmlspecialchars($event['start_date']) ?> - <?= htmlspecialchars($event['end_date']) ?></span>
                         </div>
-                    <?php endwhile; ?>
+                    </div>
+                <?php endwhile; ?>
+
                 </div>
             </div>
         </section>

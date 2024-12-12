@@ -9,18 +9,17 @@ $navbar_items = [];
 if (isset($_SESSION['email'])) {
     // User is logged in
     $navbar_items = [
-        'Home' => 'user_dashboard.php',
+        'Home' => 'user/user_dashboard.php',
         'Events' => 'events.php',
-        'Segments' => 'segments.php',
-        'Profile' => 'profile.php',
+        'Segments' => 'user/segments.php',
         'Logout' => 'logout.php',
     ];
 } else {
     // User is not logged in
     $navbar_items = [
-        'Home' => '../index.php',
+        'Home' => 'index.php',
         'Events' => 'events.php',
-        'Login' => 'login.php',
+        'Login' => 'user/login.php',
         'Register' => 'register.php',
     ];
 }

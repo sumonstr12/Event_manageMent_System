@@ -61,6 +61,11 @@ if (!isset($_SESSION['email'])) {
             margin: 0;
             font-size: 18px;
         }
+        .option p {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #f0f0f0;
+        }
     </style>
 </head>
 <body>
@@ -68,14 +73,18 @@ if (!isset($_SESSION['email'])) {
     <div class="container">
         <h1>Reports</h1>
         <div class="options">
+            <!-- Link to Income Page -->
             <a href="income.php" class="option">
                 <h3>Income</h3>
+                <p>View total income generated for a selected event and its segments.</p>
             </a>
+
+            <!-- Link to Expenditure Page -->
             <a href="expenditure.php" class="option">
-                <h3>expenditure</h3>
+                <h3>Expenditure</h3>
+                <p>Log and review expenditure details for an event, categorized by segments.</p>
             </a>
         </div>
     </div>
 </body>
 </html>
-

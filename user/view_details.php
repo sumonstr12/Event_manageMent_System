@@ -1,7 +1,7 @@
 <?php
 
-include('includes/header_n.php');
-include('includes/dbconnect.php');
+include('../includes/header_n.php');
+include('../includes/dbconnect.php');
 
 // Validate and fetch event ID
 if (isset($_GET['id'])) {

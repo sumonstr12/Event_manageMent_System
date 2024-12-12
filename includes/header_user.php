@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 include('dbconnect.php');
@@ -12,6 +11,7 @@ if (isset($_SESSION['email'])) {
     $navbar_items = [
         'Home' => 'user_dashboard.php',
         'Events' => 'events.php',
+        'Segments' => 'segments.php',
         'Logout' => 'logout.php',
     ];
 } else {
@@ -30,41 +30,24 @@ if (isset($_SESSION['email'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../Tailwind/output.css">
     <title>Event Management System</title>
-    <style>
-        /* Navbar styling */
-        nav {
-            background-color: #333;
-            padding: 10px 20px;
-        }
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        nav ul li {
-            margin: 0 10px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 5px;
-        }
-        nav ul li a:hover {
-            background-color: #555;
-        }
-    </style>
 </head>
 <body>
-    <nav>
-        <ul>
-            <?php foreach ($navbar_items as $name => $link): ?>
-                <li><a href="<?php echo $link; ?>"><?php echo $name; ?></a></li>
-            <?php endforeach; ?>
-        </ul>
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-white text-lg font-semibold">EVENT.HOLD</a>
+            
+            <!-- Navbar Links -->
+            <div class="space-x-4">
+                <?php foreach ($navbar_items as $name => $link): ?>
+                    <a href="<?php echo $link; ?>" class="text-gray-300 hover:text-white">
+                        <?php echo $name; ?>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        </div>
     </nav>
 </body>
 </html>

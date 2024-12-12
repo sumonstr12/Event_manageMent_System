@@ -15,7 +15,7 @@ if (!isset($_SESSION['email'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Clubs and Departments</title>
+    <title>Manage Clubs and Disciplines</title>
     <link rel="stylesheet" href="../assets/css/style.css">
     <style>
         body {
@@ -66,13 +66,13 @@ if (!isset($_SESSION['email'])) {
 <body>
     
     <div class="container">
-        <h1>Manage Clubs and Departments</h1>
+        <h1>Manage Clubs and Discipline</h1>
         <div class="options">
             <a href="add_clubs.php" class="option">
                 <h3>Manage Clubs</h3>
             </a>
             <a href="add_dept.php" class="option">
-                <h3>Manage Departments</h3>
+                <h3>Manage Disciplines</h3>
             </a>
         </div>
     </div>

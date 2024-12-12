@@ -1,5 +1,3 @@
-
-
 <?php
 
 include('../includes/header_user.php');
@@ -16,90 +14,37 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Events</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="../assets/css/footer.css">
-    <style>
-        /* Styling for the events page */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
+    <link href="../Tailwind/output.css" rel="stylesheet">
+    <script>
+        // Dark mode toggle
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
         }
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-        }
-        .event-card {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 0 auto;
-            justify-content: center;
-        }
-        .event {
-            width: 300px;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            text-align: center;
-        }
-        .event img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-        .event h3 {
-            margin: 15px 0;
-            font-size: 18px;
-            color: #444;
-        }
-        .event p {
-            font-size: 14px;
-            color: #666;
-            margin: 0 10px 15px;
-        }
-        .event a {
-            display: inline-block;
-            margin: 10px 0 15px;
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .event a:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    </script>
 </head>
-<body>
-    
-    <div class="container">
-        <h1>All Events</h1>
-        <div class="event-card">
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+
+    <div class="container mx-auto px-6 py-12 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+        <div class="flex justify-between items-center mb-6">
+            <h1 class="text-4xl font-bold text-center">All Events</h1>
+            <button 
+                onclick="toggleDarkMode()" 
+                class="bg-blue-500 dark:bg-blue-dark text-white py-2 px-4 rounded hover:bg-blue-600 dark:hover:bg-blue-700">
+                Toggle Dark Mode
+            </button>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <?php
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    echo '<div class="event">';
-                    echo '<h3>' . $row['name'] . '</h3>';
-                    echo '<p>' . $row['description'] . '</p>';
-                    echo '<a href="../show_event.php?id=' . $row['event_id'] . '">View Details</a>';
+                    echo '<div class="bg-blue-300 dark:bg-gray-700 border border-gray-600 dark:border-gray-600 rounded-lg shadow-lg p-6 text-center">';
+                    echo '<h3 class="text-2xl font-semibold mb-4">' . htmlspecialchars($row['name']) . '</h3>';
+                    echo '<p class="mb-6">' . htmlspecialchars($row['description']) . '</p>';
+                    echo '<a href="view_details.php?id=' . $row['event_id'] . '" class="bg-blue-500 dark:bg-blue-dark text-black py-2 px-4 rounded hover:bg-blue-600 dark:hover:bg-blue-700">View Details</a>';
                     echo '</div>';
                 }
             } else {
-                echo '<p>No events found!</p>';
+                echo '<p class="text-center">No events found!</p>';
             }
             ?>
         </div>
